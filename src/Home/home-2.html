@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+    <h1>Thông tin Hình Tròn</h1>
+
+    <!-- Các trường nhập bán kính và màu sắc -->
+    <label for="radiusInput">Nhập bán kính:</label>
+    <input type="number" id="radiusInput" placeholder="Nhập bán kính" />
+
+    <label for="colorInput">Nhập màu sắc:</label>
+    <input type="text" id="colorInput" placeholder="Nhập màu sắc" />
+
+    <!-- Nút để kích hoạt hàm inputCircleInfo -->
+    <button onclick="inputCircleInfo1()">Gửi</button>
+
+    <!-- Hiển thị thông tin hình tròn tại đây -->
+    <div id="circleInfo"></div>
+    <table id="circleTable">
+        <tr>
+            <th>Thuộc tính</th>
+            <th>Giá trị</th>
+        </tr>
+        <tr>
+            <td>Bán kính</td>
+            <td id="radiusValue"></td>
+        </tr>
+        <tr>
+            <td>Màu sắc</td>
+            <td id="colorValue"></td>
+        </tr>
+        <tr>
+            <td>Diện tích</td>
+            <td id="areaValue"></td>
+        </tr>
+        <tr>
+            <td>Chu vi</td>
+            <td id="circumferenceValue"></td>
+        </tr>
+    </table>
+    <div id="circleCanvas"></div>
+
+</body>
+<script src="/dist/Home/home-2.js"></script>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập về nhà</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Exercise 05</h1>
+    <button class="btn btn-primary" onclick="handleEmployeeInput()">Nhập thông tin nhân viên</button>
+    <button class="btn btn-success" onclick="displayEmployees()">Hiển thị thông tin nhân viên</button>
+
+    <form id="employee-form" style="display:none;">
+        <h2>Nhập thông tin nhân viên:</h2>
+        <div class="form-group">
+            <label for="employeeName">Tên nhân viên:</label>
+            <input type="text" class="form-control" id="employeeName" required>
+        </div>
+
+        <div class="form-group">
+            <label for="employeeAge">Tuổi:</label>
+            <input type="number" class="form-control" id="employeeAge" required>
+        </div>
+
+        <div class="form-group">
+            <label for="employeeGen">Giới tính:</label>
+            <select class="form-control" id="employeeGen" required>
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+                <option value="Khác">Khác</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="employeeRate">Hệ số lương:</label>
+            <input type="number" class="form-control" id="employeeRate" required>
+        </div>
+
+        <button type="button" class="btn btn-primary" onclick="addEmployee()">Thêm nhân viên</button>
+    </form>
+
+    <div id="employee-display" style="display:none;">
+        <h2>Thông tin nhân viên:</h2>
+        <div id="employee-list"></div>
+    </div>
+</div>
+
+    
+</body>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="/dist/pages/home.js"></script>
+</html>

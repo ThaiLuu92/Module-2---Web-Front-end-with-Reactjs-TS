@@ -1,24 +1,21 @@
+"use strict";
 // class Node1 {
 //   public value: any;
 //   public next: Node | null;
-
 //   constructor(value: any) {
 //     this.value = value;
 //     this.next = null;
 //   }
 // }
-
 // class LinkedList {
 //   private head: Node | null;
 //   private tail: Node | null;
 //   private length: number;
-
 //   constructor() {
 //     this.head = null;
 //     this.tail = null;
 //     this.length = 0;
 //   }
-
 //   push(value: any): LinkedList {
 //     const newNode = new Node(value);
 //     if (!this.head) {
@@ -31,7 +28,6 @@
 //     this.length++;
 //     return this;
 //   }
-
 //   pop(): Node1 | undefined {
 //     if (!this.head) return undefined;
 //     let current = this.head;
@@ -49,7 +45,6 @@
 //     }
 //     return current;
 //   }
-
 //   shift(): Node1 | undefined {
 //     if (!this.head) return undefined;
 //     const currentHead = this.head;
@@ -60,7 +55,6 @@
 //     }
 //     return currentHead;
 //   }
-
 //   unshift(value: any): LinkedList {
 //     const newNode = new Node(value);
 //     if (!this.head) {
@@ -73,7 +67,6 @@
 //     this.length++;
 //     return this;
 //   }
-
 //   get(index: number): Node1 | null {
 //     if (index < 0 || index >= this.length) return null;
 //     let current = this.head;
@@ -84,7 +77,6 @@
 //     }
 //     return current;
 //   }
-
 //   set(index: number, value: any): boolean {
 //     const foundNode = this.get(index);
 //     if (foundNode) {
@@ -93,7 +85,6 @@
 //     }
 //     return false;
 //   }
-
 //   insert(index: number, value: any): boolean {
 //     if (index < 0 || index > this.length) return false;
 //     if (index === this.length) {
@@ -111,7 +102,6 @@
 //     this.length++;
 //     return true;
 //   }
-
 //   remove(index: number): Node | undefined {
 //     if (index < 0 || index >= this.length) return undefined;
 //     if (index === 0) return this.shift();
@@ -122,7 +112,6 @@
 //     this.length--;
 //     return removedNode;
 //   }
-
 //   reverse(): LinkedList {
 //     let node = this.head;
 //     this.head = this.tail;
@@ -137,7 +126,6 @@
 //     }
 //     return this;
 //   }
-
 //   printList(): void {
 //     const values: any[] = [];
 //     let current = this.head;
@@ -148,23 +136,17 @@
 //     console.log(values);
 //   }
 // }
-
 // // Example usage:
 // const linkedList = new LinkedList();
 // linkedList.push(10).push(20).push(30);
 // linkedList.printList(); // [10, 20, 30]
-
 // linkedList.pop();
 // linkedList.printList(); // [10, 20]
-
 // linkedList.unshift(5);
 // linkedList.printList(); // [5, 10, 20]
-
 // linkedList.insert(2, 15);
 // linkedList.printList(); // [5, 10, 15, 20]
-
 // linkedList.remove(1);
 // linkedList.printList(); // [5, 15, 20]
-
 // linkedList.reverse();
 // linkedList.printList(); // [20, 15, 5]

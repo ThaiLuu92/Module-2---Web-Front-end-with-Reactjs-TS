@@ -96,7 +96,7 @@ class StudentManager {
     }
 }
 const studentManager = new StudentManager();
-function mainMenu() {
+function mainMenuStudent() {
     const choice = String(prompt("Nhập lựa chọn của bạn: C:Tạo/R: Hiển thị/U: Thêm/D: Xóa và thoát là E")).toUpperCase();
     switch (choice) {
         case "R":
@@ -127,7 +127,7 @@ function mainMenu() {
             console.log("Lựa chọn không hợp lệ.");
     }
     if (choice !== "E") {
-        mainMenu();
+        mainMenuStudent();
     }
 }
 const student1 = new Student(1, "Viễn", true, "RA-DN", 18, "Đà Nẵng");
@@ -136,4 +136,4 @@ const student3 = new Student(3, "Hương", false, "RA-DN", 18, "Quảng Trị");
 studentManager.createStudent(student1);
 studentManager.createStudent(student2);
 studentManager.createStudent(student3);
-mainMenu();
+mainMenuStudent();

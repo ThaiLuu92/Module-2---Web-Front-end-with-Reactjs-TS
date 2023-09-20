@@ -132,7 +132,7 @@ class StudentManager {
 
 const studentManager = new StudentManager();
 
-function mainMenu() {
+function mainMenuStudent() {
   const choice = String(
     prompt(
       "Nhập lựa chọn của bạn: C:Tạo/R: Hiển thị/U: Thêm/D: Xóa và thoát là E"
@@ -176,7 +176,7 @@ function mainMenu() {
   }
 
   if (choice !== "E") {
-    mainMenu();
+    mainMenuStudent();
   }
 }
 
@@ -196,4 +196,4 @@ const student3 = new Student(
 studentManager.createStudent(student1);
 studentManager.createStudent(student2);
 studentManager.createStudent(student3);
-mainMenu();
+mainMenuStudent();

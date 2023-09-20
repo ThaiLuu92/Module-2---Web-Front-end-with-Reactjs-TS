@@ -13,8 +13,8 @@ class Employee {
     }
 }
 const employees = [];
-class Main {
-    static main() {
+class Company {
+    static company() {
         const employee1 = new Employee(1, "Nguyen Van A", 30, "Nam", 1.5, 0);
         const employee2 = new Employee(2, "Tran Thi B", 25, "Nữ", 1.2, 0);
         employees.push(employee1, employee2);
@@ -33,4 +33,4 @@ class Main {
         });
     }
 }
-Main.main();
+Company.company();

@@ -19,8 +19,8 @@ class Employee {
 const employees: Employee[] = [];
 
 // Lớp Main chứa phương thức main()
-class Main {
-  static main(): void {
+class Company {
+  static company(): void {
     // Khởi tạo và thêm nhân viên vào mảng
     const employee1 = new Employee(1, "Nguyen Van A", 30, "Nam", 1.5, 0);
     const employee2 = new Employee(2, "Tran Thi B", 25, "Nữ", 1.2, 0);
@@ -45,5 +45,5 @@ class Main {
   }
 }
 
-// Gọi phương thức main() từ lớp Main để chạy chương trình
-Main.main();
+
+Company.company();

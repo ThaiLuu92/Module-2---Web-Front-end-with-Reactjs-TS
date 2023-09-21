@@ -1,78 +1,90 @@
 "use strict";
-class ProductLab {
-    constructor(id, name, price, quantily) {
-        this.getId = () => {
-            return this.id;
-        };
-        this.getName = () => {
-            return this.name;
-        };
-        this.getPrice = () => {
-            return this.price;
-        };
-        this.getQuantily = () => {
-            return this.quantily;
-        };
-        this.setId = (id) => {
-            this.id = id;
-        };
-        this.setName = (name) => {
-            this.name = name;
-        };
-        this.setPrice = (price) => {
-            this.price = price;
-        };
-        this.setQuantily = (quantily) => {
-            this.quantily = quantily;
-        };
-        this.id = id;
+class Product {
+    constructor(id, name, price, quantity) {
         this.name = name;
         this.price = price;
-        this.quantily = quantily;
+        this.quantity = quantity;
+        this.id = id;
     }
-    inputData() {
-        const id = Number(prompt("Nhập ID sản phẩm:"));
-        const name = prompt("Nhập tên sản phẩm:");
-        const price = Number(prompt("Nhập giá sản phẩm:"));
-        const quantily = Number(prompt("Nhập số lượng sản phẩm:"));
-        if (id) {
-            this.id = id;
-        }
-        if (name) {
-            this.name = name;
-        }
-        if (price) {
-            this.price = price;
-        }
-        if (quantily) {
-            this.quantily = quantily;
-        }
+    get info() {
+        return {
+            name: this.name,
+            price: this.price,
+            quantity: this.quantity,
+            id: this.id,
+        };
     }
-    get displayData() {
-        return `ID: ${this.getName} Name: ${this.getName} Price: ${this.getPrice} Quantity: ${this.getQuantily} `;
+    set setName(name) {
+        this.name = name;
+    }
+    set setPrice(price) {
+        this.price = price;
+    }
+    set setQuantity(quantity) {
+        this.quantity = quantity;
     }
 }
-class BakeryLab {
+class Bakery {
     constructor() {
-        this.products = [];
+        this.productList = [];
     }
-    createProduct() {
-        const product = new ProductLab(0, "", 0, 0);
-        product.inputData();
-        this.products.push(product);
-    }
-    updateProduct(index) {
-        const product = this.products[index];
-        product.inputData();
-        this.products.splice(index, 1, product);
+    createProduct(data) {
+        let id = 1;
+        if (this.productList.length > 0) {
+            id = this.productList[this.productList.length - 1].id + 1;
+        }
+        const newProduct = new Product(id, data.name, data.price, data.quantity);
+        this.productList.push(newProduct);
     }
     showAllProduct() {
-        this.products.forEach((product) => {
-            console.log(product.displayData);
-        });
+        return this.productList;
     }
-    deleteProduct(index) {
-        this.products.splice(index, 1);
+    deleteProduct(id) {
+        const index = this.productList.findIndex((product) => product.id === id);
+        if (index !== -1) {
+            // Lấy số lượng sản phẩm bị xóa để hoàn lại
+            const deletedProduct = this.productList[index];
+            const deletedQuantity = deletedProduct.info.quantity;
+            // Xóa sản phẩm khỏi danh sách
+            this.productList.splice(index, 1);
+            // Cộng số lượng đã xóa vào sản phẩm khác cùng loại (nếu có)
+            for (const product of this.productList) {
+                if (product.info.name === deletedProduct.info.name) {
+                    product.setQuantity += deletedQuantity;
+                }
+            }
+        }
+    }
+    updateProduct(data) {
+        if (data?.id) {
+            const product = this.productList.find((product) => product.id === data.id);
+            if (product) {
+                if (data.price !== undefined) {
+                    product.setPrice = data.price;
+                }
+                if (data.quantity !== undefined) {
+                    product.setQuantity = data.quantity;
+                }
+            }
+        }
+    }
+    buyProduct(id) {
+        const product = this.productList.find((product) => product.id === id);
+        if (product === undefined) {
+            console.log("Sản phẩm không tồn tại");
+            return;
+        }
+        if (product.info.quantity > 0) {
+            // Giảm số lượng trong Bakery
+            product.setQuantity = product.info.quantity - 1;
+            // Phải tạo sản phẩm mới với số lượng mới
+            const newProduct = new Product(product.info.id, product.info.name, product.info.price, 1);
+            return newProduct;
+        }
+        else {
+            console.log("Sản phẩm hết hàng");
+            return;
+        }
     }
 }
 class Cart {
@@ -82,19 +94,74 @@ class Cart {
     addToCart(product) {
         this.cart.push(product);
     }
-    updateCart(index, quantity) {
-        const cart = this.cart[index];
+    updateCart(id, quantity) {
+        const product = this.cart.find((item) => item.info.id === id);
+        if (product) {
+            product.setQuantity = quantity;
+        }
     }
     showAllCart() {
-        this.cart.forEach((product) => {
-            console.log(product.displayData);
-        });
+        return this.cart;
     }
-    deleteCart(index) {
-        this.cart.splice(index, 1);
+    deleteCart(id) {
+        const index = this.cart.findIndex((product) => product.info.id === id);
+        if (index !== -1) {
+            // Lấy số lượng sản phẩm bị xóa để hoàn lại
+            const deletedProduct = this.cart[index];
+            const deletedQuantity = deletedProduct.info.quantity;
+            // Xóa sản phẩm khỏi giỏ hàng
+            this.cart.splice(index, 1);
+            for (const product of this.cart) {
+                if (product.info.name === deletedProduct.info.name) {
+                    product.setQuantity += deletedQuantity;
+                }
+            }
+        }
     }
 }
-const bakery = new BakeryLab();
-const cart = new Cart();
-const product1 = new ProductLab(1, "Chocolate", 45000, 100);
-const product2 = new ProductLab(2, "Cookies", 90000, 100);
+const store = new Bakery();
+// Thêm sản phẩm vào cửa hàng
+store.createProduct({ name: "Bánh mì", price: 20000, quantity: 50 });
+store.createProduct({ name: "Bánh bao", price: 15000, quantity: 0 });
+store.createProduct({ name: "Bánh trung thu", price: 150000, quantity: 200 });
+store.createProduct({ name: "Bánh gạo", price: 25000, quantity: 100 });
+store.createProduct({ name: "Bánh kem", price: 50000, quantity: 30 });
+// Cập nhật và xóa sản phẩm
+store.updateProduct({ id: 3, price: 80000 });
+store.deleteProduct(1);
+// Hiển thị danh sách sản phẩm trong cửa hàng
+console.log("Danh sách sản phẩm trong cửa hàng:", store.showAllProduct());
+const cartInstance = new Cart();
+// Thêm sản phẩm vào giỏ hàng
+const productNameToBuy = "Bánh trung thu";
+const productToBuy = store
+    .showAllProduct()
+    .find((product) => product.info.name === productNameToBuy);
+if (!productToBuy) {
+    console.log("Chúng tôi không có sản phẩm này");
+}
+else {
+    let continueBuying = true;
+    while (continueBuying) {
+        const existingProduct = cartInstance
+            .showAllCart()
+            .find((product) => product.info.id === productToBuy.id);
+        if (existingProduct) {
+            cartInstance.updateCart(productToBuy.id, existingProduct.info.quantity + 1);
+            console.log(`Đã cập nhật số lượng của sản phẩm ${productToBuy.info.name}`);
+        }
+        else {
+            // Tạo một đối tượng Product mới từ dữ liệu productToBuy
+            const newProduct = new Product(productToBuy.id, productToBuy.info.name, productToBuy.info.price, 1);
+            cartInstance.addToCart(newProduct);
+            console.log(`Đã thêm sản phẩm ${productToBuy.info.name} vào giỏ hàng`);
+        }
+        console.log("Sản phẩm đã được thêm vào giỏ hàng!");
+        console.log("Danh sách sản phẩm trong giỏ hàng:");
+        const cartItems = cartInstance.showAllCart();
+        const userInput = prompt("Tiếp tục mua hàng? (Nhập 'no' để kết thúc)");
+        if (userInput?.toLowerCase() === "no") {
+            continueBuying = false;
+        }
+    }
+}

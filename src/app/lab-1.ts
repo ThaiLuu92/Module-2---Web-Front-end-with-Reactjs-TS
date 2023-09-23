@@ -85,6 +85,9 @@ class Bakery {
     }
   }
 
+
+  // người dùng mua hàng
+
   buyProduct(id: number): Product | undefined {
     const product = this.productList.find((product) => product.id === id);
     if (product === undefined) {
@@ -109,7 +112,16 @@ class Bakery {
       return;
     }
   }
+
+  // Người dùng trả hàng
+
+  refundProduct(product: Product) {
+
+    // Kiểm tra và đưa vào kho
+  }
 }
+
+const store = new Bakery();
 
 class Cart {
   private cart: Product[] = [];
@@ -131,25 +143,29 @@ class Cart {
 
   deleteCart(id: number): void {
     const index = this.cart.findIndex((product) => product.info.id === id);
-    if (index !== -1) {
-      // Lấy số lượng sản phẩm bị xóa để hoàn lại
-      const deletedProduct = this.cart[index];
-      const deletedQuantity = deletedProduct.info.quantity;
-
-      // Xóa sản phẩm khỏi giỏ hàng
-      this.cart.splice(index, 1);
-
-      
-      for (const product of this.cart) {
-        if (product.info.name === deletedProduct.info.name) {
-          product.setQuantity += deletedQuantity;
-        }
-      }
+    const deleteproduct = this.cart.find((product) => product.info.id === id);
+    if (!deleteproduct) {
+      return;
     }
+
+    store.refundProduct(deleteproduct);
+
+    // Lấy số lượng sản phẩm bị xóa để hoàn lại
+    const deletedProduct = this.cart[index];
+   
+
+    // Xóa sản phẩm khỏi giỏ hàng
+    this.cart.splice(index, 1);
+
+    // for (const product of this.cart) {
+    //   if (product.info.name === deletedProduct.info.name) {
+    //     product.setQuantity += deletedQuantity;
+    //   }
+    // }
   }
 }
 
-const store = new Bakery();
+
 
 // Thêm sản phẩm vào cửa hàng
 store.createProduct({ name: "Bánh mì", price: 20000, quantity: 50 });
@@ -167,49 +183,5 @@ console.log("Danh sách sản phẩm trong cửa hàng:", store.showAllProduct()
 
 const cartInstance = new Cart();
 
-// Thêm sản phẩm vào giỏ hàng
-const productNameToBuy = "Bánh trung thu";
-const productToBuy = store
-  .showAllProduct()
-  .find((product) => product.info.name === productNameToBuy);
-if (!productToBuy) {
-  console.log("Chúng tôi không có sản phẩm này");
-} else {
-  let continueBuying = true;
 
-  while (continueBuying) {
-    const existingProduct = cartInstance
-      .showAllCart()
-      .find((product) => product.info.id === productToBuy.id);
-
-    if (existingProduct) {
-      cartInstance.updateCart(
-        productToBuy.id,
-        existingProduct.info.quantity + 1
-      );
-      console.log(`Đã cập nhật số lượng của sản phẩm ${productToBuy.info.name}`);
-    } else {
-      // Tạo một đối tượng Product mới từ dữ liệu productToBuy
-      const newProduct = new Product(
-        productToBuy.id,
-        productToBuy.info.name,
-        productToBuy.info.price,
-        1
-      );
-
-      cartInstance.addToCart(newProduct);
-      console.log(`Đã thêm sản phẩm ${productToBuy.info.name} vào giỏ hàng`);
-    }
-
-    console.log("Sản phẩm đã được thêm vào giỏ hàng!");
-    console.log("Danh sách sản phẩm trong giỏ hàng:");
-    const cartItems = cartInstance.showAllCart();
-
-    const userInput = prompt("Tiếp tục mua hàng? (Nhập 'no' để kết thúc)");
-
-    if (userInput?.toLowerCase() === "no") {
-      continueBuying = false;
-    }
-  }
-}
 

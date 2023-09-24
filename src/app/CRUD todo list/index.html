@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo list</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Note App</h1>
+    </header>
+    <main>
+        <div class="note-app-container">
+            <p>Title</p>
+            <input type="text" name="" id="note-input" placeholder="Take o note...">
+            <i class="fa-solid fa-circle-plus" id="add-note"></i>
+            <p id="error-message"></p>
+        </div>
+        <div class="tasks-area">
+            <div class="task-card">
+                <p>ABC</p>
+                <div class="icon"><i class="fa-solid fa-pen-to-square"></i><i class="fa-solid fa-trash"></i></div>
+            </div>
+
+            <div class="task-card">
+                <p>ABC</p>
+                <div class="icon"><i class="fa-solid fa-pen-to-square" id="edit-note"></i><i class="fa-solid fa-trash" id="delete-note"></i></div>
+            </div>
+            <div class="task-card">
+                <p>ABC</p>
+                <div class="icon"><i class="fa-solid fa-pen-to-square"></i><i class="fa-solid fa-trash"></i></div>
+            </div>
+            <div class="task-card">
+                <p>ABC</p>
+                <div class="icon"><i class="fa-solid fa-pen-to-square"></i><i class="fa-solid fa-trash"></i></div>
+            </div>
+            <div class="task-card">
+                <p>ABC</p>
+                <div class="icon"><i class="fa-solid fa-pen-to-square"></i><i class="fa-solid fa-trash"></i></div>
+            </div>
+        </div>
+    </main>
+
+</body>
+<script src="/dist/app/CRUD todo list/app.js"></script>
+
+</html>

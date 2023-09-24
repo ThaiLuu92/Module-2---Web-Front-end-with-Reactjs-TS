@@ -1,0 +1,163 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: rgb(238, 237, 237);
+}
+
+main {
+  border: 1px solid chartreuse;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* CSS header  */
+
+header {
+  margin-top: 50px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  min-width: 700px;
+  background-color: rgb(111, 203, 243);
+}
+
+header > * {
+  flex: 0.3333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header > .total-board {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+header > .total-board > * {
+  display: flex;
+  justify-content: space-between;
+  min-width: 140px;
+  font-weight: 700;
+  font-size: 17px;
+}
+
+/* CSS  player-container */
+.player-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.player-tasks {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 700px;
+  background-color: white;
+  color: gray;
+  padding-left: 10px;
+  border-bottom: 0.8px solid rgb(238, 237, 237);
+}
+
+.player-tasks .player-name {
+  display: flex;
+  gap: 10px;
+  
+}
+.player-tasks .player-name > * {
+  padding: 12px;
+  font-size: 19px;
+}
+.player-name .fa-xmark {
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.player-name .fa-xmark:hover {
+  color: #333;
+}
+
+.player-point {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.player-point > * {
+  width: 50px;
+  padding: 12px;
+  font-size: 19px;
+  text-align: center;
+}
+.player-point > span {
+  width: 60px;
+}
+.player-point .fa-solid {
+  cursor: pointer;
+  background-color: rgb(238, 237, 237);
+}
+.player-point .fa-minus:hover {
+  background-color: #333;
+  color: white;
+}
+.player-point .fa-plus:hover {
+  background-color: rgb(111, 203, 243);
+  color: white;
+}
+
+/* CSS FOOTER */
+
+footer {
+  padding: 20px;
+  min-width: 700px;
+  background-color: rgb(111, 203, 243);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer input {
+  width: 500px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(32, 144, 192);
+  padding: 5px 20px;
+  font-size: 17px;
+  color: white;
+}
+
+footer input:focus-visible {
+  outline: none;
+}
+footer input::placeholder {
+  color: rgba(242, 242, 242, 0.936);
+}
+
+footer button {
+  text-align: center;
+  border-radius: 5px;
+  border: none;
+  background-color: white;
+  padding: 5px 20px;
+  font-size: 17px;
+  color: #333;
+  font-weight: 600;
+}
+footer button:hover {
+  color: white;
+  background-color: #333;
+}

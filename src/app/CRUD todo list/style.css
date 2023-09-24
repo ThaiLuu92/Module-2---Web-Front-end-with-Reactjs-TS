@@ -114,6 +114,34 @@ background-color:rgb(220, 213, 213) ;
 #error-message {
     color: red;
     position: relative;
-    top: -10px;
-    left: 0;
+    top: -30px;
+    left: -20px;
+}
+/* CSS Tooltip */
+.fa-solid {
+    position: relative;
+}
+
+.fa-solid .tooltiptext {
+  visibility: hidden;
+  width: 70px;
+  background-color:rgb(227, 217, 217);
+  color: #333;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -33px;
+   margin-bottom: 2px;
+}
+
+.fa-solid:hover .tooltiptext {
+  visibility: visible;
 }

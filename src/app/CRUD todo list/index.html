@@ -19,7 +19,7 @@
         <div class="note-app-container">
             <p>Title</p>
             <input type="text" name="" id="note-input" placeholder="Take o note...">
-            <i class="fa-solid fa-circle-plus" id="add-note"></i>
+            <i class="fa-solid fa-circle-plus" id="add-note"><span class="tooltiptext">Add</span></i></div></i>
             <p id="error-message"></p>
         </div>
         <div class="tasks-area">
@@ -30,7 +30,10 @@
 
             <div class="task-card">
                 <p>ABC</p>
-                <div class="icon"><i class="fa-solid fa-pen-to-square" id="edit-note"></i><i class="fa-solid fa-trash" id="delete-note"></i></div>
+                <div class="icon"><i class="fa-solid fa-pen-to-square" id="edit-note">
+                        <span class="tooltiptext">Edit</span>
+                    </i><i class="fa-solid fa-trash" id="delete-note">
+                        <span  class="tooltiptext">Delete</span></i></div>
             </div>
             <div class="task-card">
                 <p>ABC</p>

@@ -29,8 +29,8 @@ const renderNotes = (): void => {
         <div class="task-card">
           <p>${note}</p>
           <div class="icon">
-            <i class="fa-solid fa-pen-to-square" id="edit-note-${index}"></i>
-            <i class="fa-solid fa-trash" id="delete-note-${index}"></i>
+            <i class="fa-solid fa-pen-to-square" id="edit-note-${index}"><span class="tooltiptext">Edit</span></i>
+            <i class="fa-solid fa-trash" id="delete-note-${index}"><span  class="tooltiptext">Delete</span></i>
           </div>
         </div>
       `;

@@ -1,0 +1,21 @@
+body {
+    background-color: hsl(0, 1%, 81%);
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    margin-top: 50px;
+    border: 1px solid #333;
+    width: 500px;
+}
+table tr {
+    margin-bottom: 10px;
+}
+table th {
+   text-align: left;
+}
+button {
+    margin: 10px 0;
+    margin-left: 10px;
+}

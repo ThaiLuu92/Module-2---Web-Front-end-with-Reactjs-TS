@@ -1,29 +1,5 @@
-
-type T_Product = {
-  name: string;
-  price: number;
-  describe: string;
-};
-
-type T_Book = {
-  author: string;
-  pageCount: number
-};
-type T_Phone = {
-  brand: string;
-  camera: number;
-};
-
-type T_Laptop = {
-  CPU: string;
-  RAM: string;
-};
-
-
-
-
+"use strict";
 // const Product:{} = [];
-
 // const book: T_Book = {
 //   name: "Ăn chuối",
 //   price: 100000,
@@ -31,7 +7,6 @@ type T_Laptop = {
 //   author: "Vô danh",
 //   pageCount:10,
 // };
-
 // const phone: T_Phone = {
 //   name: "Táo 15",
 //   price: 25000000,

@@ -8,7 +8,6 @@ body {
 }
 
 main {
-  border: 1px solid chartreuse;
   display: flex;
   justify-content: center;
   align-items: center;

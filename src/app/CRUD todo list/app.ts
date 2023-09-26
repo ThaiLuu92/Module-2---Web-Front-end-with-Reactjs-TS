@@ -1,3 +1,10 @@
+interface Note {
+  id: number;
+  content: string;
+}
+
+let notes: Note[] = [];
+
 // Bước 1: Khởi tạo dữ liệu ban đầu nếu Local Storage trống
 if (!localStorage.getItem("notes")) {
   localStorage.setItem("notes", JSON.stringify([]));
